@@ -26,16 +26,31 @@ class App extends React.Component {
     
     return(
     <div className="Display">
-      <li key={this.state.music.title}>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Album</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+          </tr>
+          {this.state.music.map(music =>
+          <tr>
+                <td>{music.title}</td>
+                <td>{music.album}</td>
+                <td>{music.artist}</td>
+                <td>{music.genre}</td>
+                <td>{music.releaseDate}</td>
+          </tr>  
+            )}
+          </thead>
       {this.state.music.title}
-    </li>
-        <ul>
          
           {console.log(this.state.music)}
           <h1>{this.state.music[0].title}</h1>
-          { this.state.music.map(title => <li>{this.state.music.title}</li>)}
-        </ul>
   
+      </table>
     </div>);
   
   }
