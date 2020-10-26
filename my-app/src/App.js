@@ -65,9 +65,22 @@ class Sound extends React.Component {
       this.setState({search: event.target.value});
     }
 
+
     render() {
+      let filteredInfo = this.props.music.filter(
+        (title) => {
+          return music.title.indexOf(this.state.search) !== -1;
+        }
+      )
       return (
         <div>
+          <ul>
+            {filteredInfo.map((music) => {
+              return <Sound music ={music}
+                  key={music.id}/>
+            })}
+
+          </ul>
           <input type="text"
             value={this.state.search}
             onChange={this.updateSeach.bind(this)}/>
@@ -77,3 +90,16 @@ class Sound extends React.Component {
   }
 }
 export default Sound;
+
+function navigationSection() {
+  return (
+    <section className="navbar">
+      <a href="music/" className="item">Home</a>
+      <a href="title" className="item">Title</a>
+      <a href="artist" className="item">Artist</a>
+      <a href="album" className="item">Album</a>
+      <a href="genre" className="item">Genre</a>
+      <a href="releaseDate" className="item">Release Date</a>
+    </section>
+      )
+  }
