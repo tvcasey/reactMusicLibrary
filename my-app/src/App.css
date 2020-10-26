@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+.Display {
+  background-color: red;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(6px + 1.5vmin);
+  color: white;
+
+}

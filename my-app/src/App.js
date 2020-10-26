@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-
+// import Sound from './App.css';
 
 class App extends React.Component {
   state={
@@ -42,14 +42,10 @@ class App extends React.Component {
                 <td>{music.artist}</td>
                 <td>{music.genre}</td>
                 <td>{music.releaseDate}</td>
-          </tr>  
+          </tr>
+
             )}
           </thead>
-      {this.state.music.title}
-         
-          {console.log(this.state.music)}
-          <h1>{this.state.music[0].title}</h1>
-  
       </table>
     </div>);
   
@@ -57,3 +53,27 @@ class App extends React.Component {
 }
 
 export default App;
+
+class Sound extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+        search: ''
+    };
+  }
+    updateSearch(event) {
+      this.setState({search: event.target.value});
+    }
+
+    render() {
+      return (
+        <div>
+          <input type="text"
+            value={this.state.search}
+            onChange={this.updateSeach.bind(this)}/>
+        </div>
+      )
+
+  }
+}
+export default Sound;
