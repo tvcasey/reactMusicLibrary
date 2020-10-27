@@ -45,5 +45,6 @@
   justify-content: center;
   font-size: calc(6px + 1.5vmin);
   color: white;
+  border: 1px;
 
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import Sound from './sound.js';
+
 // import Sound from './App.css';
 
 class App extends React.Component {
@@ -18,6 +20,22 @@ class App extends React.Component {
       })
   }
 
+  filterMusic(word) {
+    
+    // let beat = this.state.music.filter(
+    let result = this.state.music.filter(
+        title => this.state.music.title.indexOf(word));
+          
+    console.log(result);
+    return result;
+    // return beat;
+    // let result = someArray.filter(item => item.name.includes(someString))
+    // Filter this.state.music 
+    // Review filter function
+    // Once your music data has been filtered properly
+    // Update the state of the state music variable
+        }
+  
 
   render (){
     if(this.state.loading === true){
@@ -26,6 +44,7 @@ class App extends React.Component {
     
     return(
     <div className="Display">
+      <Sound filterMusic = {this.filterMusic}/>
       <table>
         <thead>
           <tr>
@@ -54,52 +73,4 @@ class App extends React.Component {
 
 export default App;
 
-class Sound extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-        search: ''
-    };
-  }
-    updateSearch(event) {
-      this.setState({search: event.target.value});
-    }
-
-
-    render() {
-      let filteredInfo = this.props.music.filter(
-        (title) => {
-          return music.title.indexOf(this.state.search) !== -1;
-        }
-      )
-      return (
-        <div>
-          <ul>
-            {filteredInfo.map((music) => {
-              return <Sound music ={music}
-                  key={music.id}/>
-            })}
-
-          </ul>
-          <input type="text"
-            value={this.state.search}
-            onChange={this.updateSeach.bind(this)}/>
-        </div>
-      )
-
-  }
-}
-export default Sound;
-
-function navigationSection() {
-  return (
-    <section className="navbar">
-      <a href="music/" className="item">Home</a>
-      <a href="title" className="item">Title</a>
-      <a href="artist" className="item">Artist</a>
-      <a href="album" className="item">Album</a>
-      <a href="genre" className="item">Genre</a>
-      <a href="releaseDate" className="item">Release Date</a>
-    </section>
-      )
-  }
+ 
